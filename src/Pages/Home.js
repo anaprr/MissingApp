@@ -1,52 +1,66 @@
-import { View, Text, StyleSheet, FlatList } from 'react-native'
+import { View, Text, StyleSheet, FlatList, Button, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import Produto from '../Components/Produto';
 import Stories from '../Components/Stories';
+import Pessoas from '../Components/Pessoas';
 
 
 export default function Home() {
 
-  const [produtos, setProdutos] = useState([]);
+  const [pessoas, setPessoas] = useState([]);
 
-  async function getProdutos() {
-    await fetch('https://fakestoreapi.com/products', {
+  async function getPessoas() {
+    await fetch('http://10.139.75.21:5251/api/Pessoas/GetAllPessoas', {
       method: 'GET',
       headers: {
         'content-type': 'application/json'
       }
     })
       .then(res => res.json())
-      .then(json => setProdutos(json))
+      .then(json => setPessoas(json))
       .catch(err => console.log(err))
   }
 
   useEffect(() => {
-    getProdutos();
+    getPessoas();
   }, [])
+
 
   return (
     <View style={css.container}>
-      {produtos ?
+      {pessoas ?
         <>
-          <Stories produtos={produtos} />
+          <Stories produtos={pessoas} />
           <FlatList
-            data={produtos}
-            renderItem={({ item }) => <Produto title={item.title} price={item.price} image={item.image} description={item.description} category={item.category} rating={item.rating} />}
+            data={pessoas}
+
+            renderItem={({ item }) => 
+            <Pessoas 
+            pessoaNome={item.pessoaNome} 
+            pessoaRoupa={item.pessoaRoupa} 
+            image={item.image} pessoaCor={item.pessoaCor} 
+            pessoaSexo={item.pessoaSexo} 
+            pessoaObservacao={item.pessoaObservacao} 
+            pessoaLocalDesaparecimento={item.pessoaLocalDesaparecimento} 
+            pessoaDtDesaparecimento={item.pessoaDtDesaparecimento} 
+            pessoaDtEncontro={item.pessoaDtEncontro} 
+            pessoaStatus={item.pessoaStatus}/>}
+            
             keyExtractor={(item) => item.id}
-            contentContainerStyle={{ height: (produtos.length * 600) + 110 }}
+            contentContainerStyle={{ height: (pessoas.length * 600) + 110 }}
           />
+          
         </>
         :
-        <Text style={css.text}>Carregando produtos...</Text>
+        <Text style={css.text}>Carregando pessoas...</Text>
       }
     </View>
   )
 }
 const css = StyleSheet.create({
   container: {
-    backgroundColor: "#191919",
+    backgroundColor: "white",
     flexGrow: 1,
-    color: "white",
+    color: "black",
     justifyContent: "center",
     alignItems: "center"
   },
@@ -56,5 +70,12 @@ const css = StyleSheet.create({
   stories: {
     width: "100%",
     height: 100
-  }
+  },
+  btn: {
+    backgroundColor: "black",
+    color:"black",
+    width: "70%",
+    height: 80,
+    borderRadius: 5,
+  },
 })

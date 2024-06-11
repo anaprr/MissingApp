@@ -12,7 +12,7 @@ export default function Stories({produtos}) {
         </View>
       }
       keyExtractor={ (item) => item.id }
-      contentContainerStyle={[css.container, { width: produtos.length * 70 }]}
+   
       horizontal={true}
     />
   )

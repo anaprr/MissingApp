@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image, Button } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { AuthContext } from '../Context/AuthContext';
 
@@ -16,10 +16,10 @@ export default function Login() {
 
     return (
         <ScrollView contentContainerStyle={css.container}>
-            <Image source={require("../../assets/logo.png")} style={css.logo} />
+            <Image source={require("../../assets/LogoProjetoFinal3.png")} style={css.logo} />
             <TextInput
                 inputMode="email"
-                placeholder="Email"
+                placeholder="Email do Usuário"
                 style={css.input}
                 value={email}
                 onChangeText={(digitado) => setEmail(digitado)}
@@ -27,7 +27,7 @@ export default function Login() {
             />
             <TextInput
                 inputMode="text"
-                placeholder="Password"
+                placeholder="Senha"
                 secureTextEntry={true}
                 style={css.input}
                 value={senha}
@@ -35,10 +35,10 @@ export default function Login() {
                 placeholderTextColor="white"
             />
             <View style={css.forgot}>
-                <Text style={css.forgotText}>Esqueceu a senha?</Text>
+                <Text style={css.forgotText}>Deseja se Cadastrar?</Text>
             </View>
             <TouchableOpacity style={css.btnLogin} onPress={RealizaLogin}>
-                <Text style={css.btnLoginText}>Log In</Text>
+                <Text style={css.btnLoginText}>Entrar</Text>
             </TouchableOpacity>
             {error &&
                 <View style={css.error}>
@@ -55,7 +55,7 @@ const css = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         alignContent: "center",
-        backgroundColor: "#191919"
+        backgroundColor: "#B03EE5"
     },
     logo: {
         width: "60%",
@@ -77,7 +77,7 @@ const css = StyleSheet.create({
         alignItems: "flex-end",
     },
     forgotText: {
-        color: "#0195fd",
+        color: "white",
         fontWeight: "bold"
     },
     btnLogin: {
@@ -86,7 +86,7 @@ const css = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 10,
         marginTop: 30,
-        backgroundColor: "#0195fd"
+        backgroundColor: "#8B33FF"
     },
     btnLoginText: {
         color: "white",
