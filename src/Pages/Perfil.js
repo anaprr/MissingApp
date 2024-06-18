@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 
-export default function Perfil() {
+export default function CriarObservação() {
   return (
     <View style={css.container}>
       <Text style={css.text}>Perfil</Text>

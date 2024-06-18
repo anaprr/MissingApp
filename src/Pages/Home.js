@@ -27,9 +27,10 @@ export default function Home() {
 
   return (
     <View style={css.container}>
+      
       {pessoas ?
         <>
-          <Stories produtos={pessoas} />
+          <Stories pessoas={pessoas} />
           <FlatList
             data={pessoas}
 
@@ -37,7 +38,8 @@ export default function Home() {
             <Pessoas 
             pessoaNome={item.pessoaNome} 
             pessoaRoupa={item.pessoaRoupa} 
-            image={item.image} pessoaCor={item.pessoaCor} 
+            image={item.image} 
+            pessoaCor={item.pessoaCor} 
             pessoaSexo={item.pessoaSexo} 
             pessoaObservacao={item.pessoaObservacao} 
             pessoaLocalDesaparecimento={item.pessoaLocalDesaparecimento} 
@@ -60,20 +62,16 @@ const css = StyleSheet.create({
   container: {
     backgroundColor: "white",
     flexGrow: 1,
-    color: "black",
+    color: "white",
     justifyContent: "center",
     alignItems: "center"
   },
   text: {
     color: "white"
   },
-  stories: {
-    width: "100%",
-    height: 100
-  },
   btn: {
-    backgroundColor: "black",
-    color:"black",
+    backgroundColor: "white",
+    color:"white",
     width: "70%",
     height: 80,
     borderRadius: 5,
