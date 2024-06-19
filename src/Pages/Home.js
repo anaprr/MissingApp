@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, FlatList, Button, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, FlatList, Button, TouchableOpacity, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Stories from '../Components/Stories';
 import Pessoas from '../Components/Pessoas';
@@ -27,7 +27,7 @@ export default function Home() {
 
   return (
     <View style={css.container}>
-      
+      <Image source={require("../../assets/LogoProjetoFinal3.png")} style={css.logo} />
       {pessoas ?
         <>
           <Stories pessoas={pessoas} />
@@ -37,6 +37,7 @@ export default function Home() {
             renderItem={({ item }) => 
             <Pessoas 
             pessoaNome={item.pessoaNome} 
+            pessoaFoto={item.pessoaFoto} 
             pessoaRoupa={item.pessoaRoupa} 
             image={item.image} 
             pessoaCor={item.pessoaCor} 
@@ -47,7 +48,7 @@ export default function Home() {
             pessoaDtEncontro={item.pessoaDtEncontro} 
             pessoaStatus={item.pessoaStatus}/>}
             
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => item.PessoaId}
             contentContainerStyle={{ height: (pessoas.length * 600) + 110 }}
           />
           
@@ -60,11 +61,13 @@ export default function Home() {
 }
 const css = StyleSheet.create({
   container: {
-    backgroundColor: "white",
+    backgroundColor: "#E39DFA",
     flexGrow: 1,
     color: "white",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    textAlign: "center",
+    width:"100%"
   },
   text: {
     color: "white"
@@ -76,4 +79,8 @@ const css = StyleSheet.create({
     height: 80,
     borderRadius: 5,
   },
+  logo:{
+    width:"40%",
+    height:"20%"
+  }
 })

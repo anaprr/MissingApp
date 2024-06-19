@@ -60,46 +60,51 @@ export default function Pessoas(
     };
 
     const FuncionaOBS = () => {
-        setExibe(!mostra); 
+        setMostra(!mostra); 
     };
 
     return (
-        <View>
+        <View style={css.tudo}>
             
-        <View style={css.caixagrandona}>
+        <View style={css.caixamaior}>
             
-           <View style={css.caixaindividual}>
+           <View style={css.caixa}>
             <View style={css.Textealinha}>
-            <View>
-                <Image style={css.fotona} source={{ uri: pessoaFoto }}  ></Image>
-            </View>
+            
           <View style={css.infoexibe}>
-          <View style={css.caixanomepessoa}>
-                <Text style={css.nomepessoa}>{pessoaNome}</Text>
+          <View >
+                <Text style={css.text}>{pessoaNome}</Text>
             </View>     
+            <View>
+                <Image style={css.foto} source={{ uri: pessoaFoto }}  ></Image>
+            </View>
             <TouchableOpacity style={css.btnDetalhes} onPress={FuncionaDetalhe}>
                 <Text style={css.btnDetalhesText}>
                     {exibe ? 'Fechar Detalhes' : 'Detalhes'}
                 </Text>
             </TouchableOpacity>
+          
           </View>
             </View>
            </View>
                 {exibe && ( 
                     <View style={css.caixaitens}>
-                    <Text style={css.tipo}>{pessoaRoupa}</Text>
-                    <Text style={css.valor}>{pessoaCor}</Text>
-                    <Text style={css.descricaoproduto}>{pessoaObservacao}</Text>
-                    <Text style={css.descricaoproduto}>{pessoaSexo}</Text>
-                    <Text style={css.descricaoproduto}>{pessoaLocalDesaparecimento}</Text>
-                    <Text style={css.descricaoproduto}>{pessoaDtDesaparecimento}</Text>
-                    <Text style={css.descricaoproduto}>{pessoaDtEncontro}</Text> 
+                    <Text style={css.text}> Roupa da Pessoa:{pessoaRoupa}</Text>
+                    <Text style={css.text}>Cor:{pessoaCor}</Text>
+                    <Text style={css.text}>Observação:{pessoaObservacao}</Text>
+                    <Text style={css.text}>Sexo:{pessoaSexo}</Text>
+                    <Text style={css.text}>Local do Desaparecimento:{pessoaLocalDesaparecimento}</Text>
+                    <Text style={css.text}>Data Do Desaparecimento:{pessoaDtDesaparecimento}</Text>
+                    <Text style={css.text}> Encontro:{pessoaDtEncontro}</Text> 
 
                     <View>
                     <View style={css.caixatexto}>
          
         </View> 
-        { sucesso ? <Text>Cadastro Realizado!</Text> :
+        <View >
+                <Text style={css.text2}>Insira uma Nova Observação:</Text>
+            </View> 
+        { sucesso ? <Text>Observação Enviada!</Text> :
         <> 
         <TextInput style={css.input}
             placeholder="descrição" placeholderTextColor={'white'} onChangeText={(digitado) => setObservacoesDescricao(digitado)} TextInput={observacoesDescricao}
@@ -118,12 +123,12 @@ export default function Pessoas(
         />
         </> 
         }
-        { erro && <Text>ERRADO</Text>}
+        { erro && <Text>Tente Novamente</Text>}
 
-      <TouchableOpacity style={css.btnLogin} onPress={NovaOBS}><Text style={css.btnLoginText}>Realizar Cadastro</Text></TouchableOpacity>
+      <TouchableOpacity  onPress={NovaOBS}><Text style={css.botao}>Salvar</Text></TouchableOpacity>
       
-                    </View>
-                    </View>
+        </View>
+        </View>
                     
                     
         )} 
@@ -134,41 +139,33 @@ export default function Pessoas(
   )
 }
 const css = StyleSheet.create({
-    input: {
-        width: "90%",
-        height: 50,
-        borderRadius: 10,
-        marginBottom: 15,
-        padding: 15,
-        backgroundColor: "#262626",
-        color: "white"
-        }, container: {
+    container: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#f3f3ff',
-        
       },
-    caixagrandona: {
+    input: {
+       textAlign:"center"
+        },
+      text:{
+        textAlign:"center"
+      },
+    caixamaior: {
         alignItems: 'center',
-        marginTop: 50
-    }, icone: {
-        width: 100,
-        height: 50,
-        marginTop: 20
-    },
-    infoexibe: {
-        flexDirection: 'column'
-        
-    }, fotona: {
+        marginTop: 40,
+        width: 250,
+        borderRadius:5,
+        backgroundColor:"#B03EE5"
+    }, 
+    foto: {
         padding: 50,
-        marginRight: 60,
-        marginTop: 45
-
-    }, caixaindividual: {
+        marginTop: 30,
+        width: "50%",
+        height: "50%",
+    }, 
+    caixa: {
         width: "95%",
         height: 150,
-        backgroundColor: "white",
         borderRadius: 5,
         justifyContent:"center",
         flexDirection: 'column',
@@ -177,11 +174,26 @@ const css = StyleSheet.create({
         borderBottomColor: 'white',
         borderColor: 'white'
         
-    }, Textealinha: {
+    },
+     Textealinha: {
         flexDirection: 'row', 
         alignItems: 'center',
         marginBottom: 40,
-        borderBottomColor: 'white',
+    },
+    tudo:{
+        width: "100%",
+    },
+    botao :{
+        textAlign:"center",
+        color:"white"
+       
+    },
+    caixaitens:{
+        textAlign:"center"
+    },
+    text2:{
+        color:"white",
+        textAlign:"center"
     }
 
 })

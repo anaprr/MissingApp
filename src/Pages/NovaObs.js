@@ -1,4 +1,4 @@
-import { View, Text, TextInput, StyleSheet, ActivityIndicator, FlatList, TouchableOpacity, Alert } from 'react-native'
+import { View, Text, TextInput, StyleSheet, ActivityIndicator, FlatList, TouchableOpacity, Alert, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useFocusEffect } from '@react-navigation/native';
 
@@ -132,7 +132,8 @@ export default function Observacao() {
 
   return (
     <View style={css.container}>
-        <Text style={css.Titulo}>Nova Observação</Text>
+      <Image source={require("../../assets/LogoProjetoFinal3.png")} style={css.logo} />
+        <Text style={css.Titulo}> Nova Observação</Text>
       {edicao == false ?
       
     <FlatList
@@ -207,7 +208,7 @@ export default function Observacao() {
 const css = StyleSheet.create({
     container:{
       flexGrow: 1,
-      backgroundColor:'white',
+      backgroundColor:'#E39DFA',
       alignItems:'center',
       marginTop: 20
     },
@@ -222,12 +223,15 @@ const css = StyleSheet.create({
       backgroundColor: "black"
   
   }, caixaind: {
-    backgroundColor: 'pink',
+    backgroundColor: '#E39DFA',
     padding: 10,
     marginTop: 10
   },
   Titulo:{
     marginTop: 30
   },
-  
+  logo:{
+    width:"40%",
+    height:"20%"
+  }
   })

@@ -42,7 +42,7 @@ export default function Login() {
             </TouchableOpacity>
             {error &&
                 <View style={css.error}>
-                    <Text style={css.errorText}>Revise os campos. Tente novamente!</Text>
+                    <Text style={css.errorText}>Email ou Senha incorretos</Text>
                 </View>
             }
         </ScrollView>

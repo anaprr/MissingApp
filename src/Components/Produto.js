@@ -11,7 +11,7 @@ export default function Produtos({title,price,image,description,category,rating}
         <View>
          <Text style={styles.texto}>{category}</Text>
         </View>
-        <View>
+        <View style={styles.boxfoto}>
             <Image style={styles.foto} source={{ uri: image}}/>
         </View>
         <View>
@@ -25,8 +25,12 @@ export default function Produtos({title,price,image,description,category,rating}
 }
 const styles = StyleSheet.create({
     foto: {
-      height: 415,
-      width: 420,
+      height: "20%",
+      width: "20%",
+    },
+    boxfoto:{
+      height: "30%",
+      width:"30%"
     },
     caixa:{
         marginTop:80
