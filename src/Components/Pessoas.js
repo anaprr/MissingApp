@@ -37,7 +37,7 @@ export default function Pessoas(
 
 
     async function NovaOBS() {
-        await fetch('http://10.139.75.41:5251/api/Observacoes/CreateObservacoes', {
+        await fetch('http://10.139.75.21:5251/api/Observacoes/CreateObservacoes', {
           method: 'POST',
           headers: {
             'content-type': 'application/json'
